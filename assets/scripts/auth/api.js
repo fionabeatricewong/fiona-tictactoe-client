@@ -1,10 +1,11 @@
 // Require:
-
 const config = require('../config')
+const store = require('../store')
 
 // AJAX Functions:
 
 const signUp = function (formData) {
+  // console.log(formData)
   return $.ajax({
     url: config.apiUrl + '/sign-up',
     method: 'POST',
@@ -19,7 +20,20 @@ const signIn = function (formData) {
     data: formData
   })
 }
+
+const signOut = function () {
+  console.log(store.user)
+  return $.ajax({
+    headers: {
+      Authorization: 'Bearer ' + store.user.token
+    },
+    url: config.apiUrl + '/sign-out',
+    method: 'DELETE'
+  })
+}
+
 module.exports = {
   signUp,
-  signIn
+  signIn,
+  signOut
 }
