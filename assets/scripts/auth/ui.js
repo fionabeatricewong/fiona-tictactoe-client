@@ -5,8 +5,10 @@ const store = require('../store')
 
 // Update the Screen Functions:
 
+// Only show sign up and sign in upon loading page:
 $('#authenticated').hide()
 $('#unauthenticated').show()
+//
 
 // Sign Up:
 const signUpSuccess = function () {
@@ -22,6 +24,7 @@ const signInSuccess = function (response) {
 
   store.user = response.user
 
+  // Remove sign up and sign in options, show the rest:
   $('#authenticated').show()
   $('#unauthenticated').hide()
 }
@@ -32,14 +35,23 @@ const signInFailure = function () {
 // Sign Out:
 const signOutSuccess = function () {
   $('#message').text('Signed you out!')
+
+  // Show only sign up and sign in again:
   $('#unauthenticated').show()
   $('#authenticated').hide()
 
   store.user = null
 }
-
 const signOutFailure = function () {
   $('#message').text('Still signed in!')
+}
+
+// Change Password:
+const changePasswordSuccess = function () {
+  $('#message').text('Password updated!')
+}
+const changePasswordFailure = function () {
+  $('#message').text('Password has not changed!')
 }
 
 module.exports = {
@@ -48,5 +60,7 @@ module.exports = {
   signInSuccess,
   signInFailure,
   signOutSuccess,
-  signOutFailure
+  signOutFailure,
+  changePasswordSuccess,
+  changePasswordFailure
 }
