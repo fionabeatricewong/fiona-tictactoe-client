@@ -18,7 +18,8 @@ const signInSuccess = function () {
 }
 const signInFailure = function () {
   $('message').text('Could not sign in! Try again!')
-}
+
+
 
 module.exports = {
   signUpSuccess,
