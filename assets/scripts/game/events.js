@@ -15,15 +15,18 @@ const onCreateGame = function (event) {
 }
 
 const makeMove = function (index) {
-  console.log(index)
   event.preventDefault()
 
-  api.updateGame(index, store.gameState.currentPlayer, store.gameState.over, store.gameState.id)
-    .then(ui.updateGameSuccess)
-    .catch(ui.updateGameFailure)
+  if (store.gameState.board[index] === '') {
+    api.updateGame(index, store.gameState.currentPlayer, store.gameState.over, store.gameState.id)
+      .then(ui.updateGameSuccess)
+      .catch(ui.updateGameFailure)
+  } else {
+    ui.updateGameFailure('Space taken')
+  }
 }
 
 module.exports = {
   onCreateGame,
-  makeMove,
+  makeMove
 }

@@ -41,8 +41,8 @@ const updateBoard = function () {
   }
 }
 
-const updateGameFailure = function () {
-  $('#message').text('Failed to make move.')
+const updateGameFailure = function (error) {
+  $('#message').text(`Failed to make move. Error: ${error}`)
 }
 
 module.exports = {
