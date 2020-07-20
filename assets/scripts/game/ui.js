@@ -14,7 +14,8 @@ const createGameSuccess = function (response) {
   store.gameState = {
     board: response.game.cells,
     over: response.game.over,
-    id: response.game._id
+    id: response.game._id,
+    currentPlayer: 'x'
   }
 }
 
@@ -22,7 +23,31 @@ const createGameFailure = function () {
   $('#message').text('Game not started.')
 }
 
+const updateGameSuccess = function (response) {
+  $('#message').text(`${store.gameState.currentPlayer} made a move.`)
+
+  store.gameState = {
+    board: response.game.cells,
+    over: response.game.over,
+    id: response.game._id,
+    currentPlayer: store.gameState.currentPlayer === 'x' ? 'o' : 'x'
+  }
+  updateBoard()
+}
+
+const updateBoard = function () {
+  for (let i = 0; i < 9; i++) {
+    $(`#cell-${i}`).text(store.gameState.board[i])
+  }
+}
+
+const updateGameFailure = function () {
+  $('#message').text('Failed to make move.')
+}
+
 module.exports = {
   createGameSuccess,
-  createGameFailure
+  createGameFailure,
+  updateGameSuccess,
+  updateGameFailure
 }

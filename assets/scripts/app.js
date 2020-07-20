@@ -11,8 +11,8 @@ $(() => {
   $('#sign-out').on('submit', authEvents.onSignOut)
   $('#change-password').on('submit', authEvents.onChangePassword)
 
+  // Game
   $('#create-game').on('submit', gameEvents.onCreateGame)
-
   for (let i = 0; i < 9; i++) {
     $(`#cell-${i}`).on('click', () => gameEvents.makeMove(i))
   }
