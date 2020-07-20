@@ -13,7 +13,8 @@ const createGameSuccess = function (response) {
 
   store.gameState = {
     board: response.game.cells,
-    over: response.game.over
+    over: response.game.over,
+    id: response.game._id
   }
 }
 
