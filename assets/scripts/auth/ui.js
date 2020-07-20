@@ -12,7 +12,7 @@ $('#unauthenticated').show()
 
 // Sign Up:
 const signUpSuccess = function () {
-  $('#message').text('Signed up!')
+  $('#message').text('Signed up! Now sign in!')
 }
 const signUpFailure = function () {
   $('#message').text('Could not sign up! Try again!')
@@ -20,7 +20,7 @@ const signUpFailure = function () {
 
 // Sign In:
 const signInSuccess = function (response) {
-  $('#message').text('Signed in!')
+  $('#message').text('Signed in! Time to play!')
 
   store.user = response.user
 
