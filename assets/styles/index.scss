@@ -1,1 +1,10 @@
 @import '~bootstrap/scss/bootstrap';
+
+$grid-border-color: #000;
+
+.cell {
+  border-color: $grid-border-color;
+  border-style: solid;
+  height: 80px;
+  width: 80px;
+}

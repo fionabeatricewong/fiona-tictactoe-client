@@ -13,6 +13,10 @@ const onCreateGame = function (event) {
     .catch(ui.createGameFailure)
 }
 
+const makeMove = function (index) {
+  console.log(index)
+}
 module.exports = {
-  onCreateGame
+  onCreateGame,
+  makeMove
 }
