@@ -17,6 +17,7 @@ const createGameSuccess = function (response) {
     id: response.game._id,
     currentPlayer: 'x'
   }
+  updateBoard()
 }
 
 const createGameFailure = function () {
@@ -24,13 +25,18 @@ const createGameFailure = function () {
 }
 
 const updateGameSuccess = function (response) {
-  $('#message').text(`${store.gameState.currentPlayer} made a move.`)
-
+  const currentPlayer = store.gameState.currentPlayer
+  const nextPlayer = currentPlayer === 'x' ? 'o' : 'x'
+  if (response.game.over) {
+    $('#message').text(`${currentPlayer} won!`)
+  } else {
+    $('#message').text(`${currentPlayer} made a move. Your turn, ${nextPlayer}`)
+  }
   store.gameState = {
     board: response.game.cells,
     over: response.game.over,
     id: response.game._id,
-    currentPlayer: store.gameState.currentPlayer === 'x' ? 'o' : 'x'
+    currentPlayer: nextPlayer
   }
   updateBoard()
 }
@@ -43,6 +49,10 @@ const updateBoard = function () {
 
 const updateGameFailure = function (error) {
   $('#message').text(`Failed to make move. Error: ${error}`)
+}
+
+const whoWon = function () {
+  if ()
 }
 
 module.exports = {

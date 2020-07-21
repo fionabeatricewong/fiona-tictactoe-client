@@ -15,6 +15,7 @@ const createGame = function () {
 }
 
 const updateGame = function (index, value, over, id) {
+  console.log(`over: ${over}`)
   return $.ajax({
     headers: {
       Authorization: 'Bearer ' + store.user.token
