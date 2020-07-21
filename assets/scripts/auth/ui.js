@@ -20,7 +20,7 @@ const signUpFailure = function () {
 
 // Sign In:
 const signInSuccess = function (response) {
-  $('#message').text('Signed in! Time to play!')
+  $('#message').text('Signed in! Time to play! Click "Start Game"')
 
   store.user = response.user
 
@@ -34,11 +34,12 @@ const signInFailure = function () {
 
 // Sign Out:
 const signOutSuccess = function () {
-  $('#message').text('Signed you out!')
+  $('#message').text('Signed out!')
 
   // Show only sign up and sign in again:
   $('#unauthenticated').show()
   $('#authenticated').hide()
+  $('#game-started').hide()
 
   store.user = null
 }
