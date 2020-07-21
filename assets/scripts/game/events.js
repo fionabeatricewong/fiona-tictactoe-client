@@ -32,27 +32,28 @@ const gameOver = function (index) {
 
   for (let i = 0; i < checkWin[index].length; i++) {
     if (boardCopy[checkWin[index][i][0]] === store.gameState.currentPlayer && boardCopy[checkWin[index][i][1]] === store.gameState.currentPlayer) {
-      return true
+      return store.gameState.currentPlayer
     }
   }
   for (let i = 0; i < boardCopy.length; i++) {
     if (boardCopy[i] === '') {
-      return false
+      return undefined
     }
   }
-  return true
+  return 'draw'
 }
 
 const makeMove = function (index) {
   event.preventDefault()
 
   if (store.gameState.over === true) {
-    ui.updateGameFailure('Game is over! Start another game.')
+    ui.updateGameFailure('Game is over! Click "Start Game" to play again.')
   } else if (store.gameState.board[index] !== '') {
-    ui.updateGameFailure('Space taken! Try another spot.')
+    ui.updateGameFailure('This space is taken! Try another one.')
   } else {
-    api.updateGame(index, store.gameState.currentPlayer, gameOver(index), store.gameState.id)
-      .then(ui.updateGameSuccess)
+    const winner = gameOver(index)
+    api.updateGame(index, store.gameState.currentPlayer, !!winner, store.gameState.id)
+      .then((response) => ui.updateGameSuccess(response, winner))
       .catch(ui.updateGameFailure)
   }
 }

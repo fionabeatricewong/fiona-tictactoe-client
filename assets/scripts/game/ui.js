@@ -24,14 +24,21 @@ const createGameFailure = function () {
   $('#message').text('Game not started.')
 }
 
-const updateGameSuccess = function (response) {
+const updateGameSuccess = function (response, winner) {
+  // Current player rotates between x and o:
   const currentPlayer = store.gameState.currentPlayer
   const nextPlayer = currentPlayer === 'x' ? 'o' : 'x'
+
   if (response.game.over) {
-    $('#message').text(`${currentPlayer} won!`)
+    if (winner === 'draw') {
+      $('#message').text('Draw!')
+    } else {
+      $('#message').text(`${currentPlayer} won! Click "Start Game" to play again!`)
+    }
   } else {
     $('#message').text(`${currentPlayer} made a move. Your turn, ${nextPlayer}`)
   }
+
   store.gameState = {
     board: response.game.cells,
     over: response.game.over,
@@ -48,11 +55,7 @@ const updateBoard = function () {
 }
 
 const updateGameFailure = function (error) {
-  $('#message').text(`Failed to make move. Error: ${error}`)
-}
-
-const whoWon = function () {
-  if ()
+  $('#message').text(`Error: ${error}`)
 }
 
 module.exports = {
