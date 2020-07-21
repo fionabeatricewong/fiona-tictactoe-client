@@ -14,6 +14,7 @@ $(() => {
   // Game
   $('#create-game').on('submit', gameEvents.onCreateGame)
   for (let i = 0; i < 9; i++) {
+    // Event listener for each cell/spot on game board
     $(`#cell-${i}`).on('click', () => gameEvents.makeMove(i))
   }
 })

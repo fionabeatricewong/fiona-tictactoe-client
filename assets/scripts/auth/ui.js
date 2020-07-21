@@ -12,9 +12,7 @@ $('#unauthenticated').show()
 
 // Sign Up:
 const signUpSuccess = function () {
-  $('#message').text('Signed up! Now sign in!')
-
-  $('#sign-up').hide()
+  $('#message').text('Signed up! Sign in to play!')
 }
 const signUpFailure = function () {
   $('#message').text('Could not sign up! Try again!')

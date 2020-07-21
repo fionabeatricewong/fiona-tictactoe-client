@@ -11,6 +11,7 @@ const onCreateGame = function (event) {
 
   api.createGame()
     .then(ui.createGameSuccess)
+    // indexGame under createGame - each game created will increase count by 1
     .then(api.indexGame)
     .then(ui.indexGameSuccess)
     .catch(ui.createGameFailure)
@@ -36,7 +37,7 @@ const gameOver = function (index) {
   boardCopy[index] = store.gameState.currentPlayer
 
   for (let i = 0; i < checkWin[index].length; i++) {
-    // Check is someone won:
+    // Check if someone won:
     if (boardCopy[checkWin[index][i][0]] === store.gameState.currentPlayer && boardCopy[checkWin[index][i][1]] === store.gameState.currentPlayer) {
       return store.gameState.currentPlayer
     }
@@ -47,14 +48,17 @@ const gameOver = function (index) {
       return undefined
     }
   }
+  // If there is no winner and all the spots are taken, it's a draw:
   return 'draw'
 }
 
 const makeMove = function (index) {
   event.preventDefault()
 
+  // Cannot add x or o to any spaces after the game is over:
   if (store.gameState.over === true) {
     ui.updateGameFailure('Game is over! Click "Start Game" to play again.')
+    // Cannot choose already occupied spots:
   } else if (store.gameState.board[index] !== '') {
     ui.updateGameFailure('This space is taken! Try another one.')
   } else {
