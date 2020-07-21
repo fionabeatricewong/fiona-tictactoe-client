@@ -7,8 +7,11 @@ $('#game-started').hide()
 
 // Create Game:
 const createGameSuccess = function (response) {
-  $('#message').text('Game started.')
+  $('#message').text('Game started. x is up first!')
 
+  // Hide Start Game button once game has started:
+  $('#create-game').hide()
+  // Show Tic Tac Toe board:
   $('#game-started').show()
 
   store.gameState = {
@@ -35,6 +38,7 @@ const updateGameSuccess = function (response, winner) {
     } else {
       $('#message').text(`${currentPlayer} won! Click "Start Game" to play again!`)
     }
+    $('#create-game').show()
   } else {
     $('#message').text(`${currentPlayer} made a move. Your turn, ${nextPlayer}`)
   }
@@ -58,9 +62,21 @@ const updateGameFailure = function (error) {
   $('#message').text(`Error: ${error}`)
 }
 
+const indexGameSuccess = function (response) {
+  // `- 1` because each sign in creates a new game and therefore increases game count
+  $('#index-game').text(`# of games played: ${response.games.length - 1}`)
+  console.log(response)
+}
+
+const indexGameFailure = function () {
+  $('#index-game').text('Could not count games played')
+}
+
 module.exports = {
   createGameSuccess,
   createGameFailure,
   updateGameSuccess,
-  updateGameFailure
+  updateGameFailure,
+  indexGameSuccess,
+  indexGameFailure
 }

@@ -13,6 +13,8 @@ $('#unauthenticated').show()
 // Sign Up:
 const signUpSuccess = function () {
   $('#message').text('Signed up! Now sign in!')
+
+  $('#sign-up').hide()
 }
 const signUpFailure = function () {
   $('#message').text('Could not sign up! Try again!')
@@ -29,7 +31,7 @@ const signInSuccess = function (response) {
   $('#unauthenticated').hide()
 }
 const signInFailure = function () {
-  $('#message').text('Could not sign in! Try again!')
+  $('#message').text('Try again! Did you forget your e-mail/password?')
 }
 
 // Sign Out:
@@ -38,6 +40,7 @@ const signOutSuccess = function () {
 
   // Show only sign up and sign in again:
   $('#unauthenticated').show()
+  $('#sign-up').show()
   $('#authenticated').hide()
   $('#game-started').hide()
 

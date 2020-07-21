@@ -3,7 +3,6 @@
 // Require:
 const api = require('./api')
 const ui = require('./ui')
-const gameApi = require('../game/api')
 const getFormFields = require('../../../lib/get-form-fields')
 
 // Event Handler Functions:
@@ -24,7 +23,6 @@ const onSignIn = function (event) {
 
   api.signIn(formData)
     .then(ui.signInSuccess)
-    .then(gameApi.createGame)
     .catch(ui.signInFailure)
 }
 

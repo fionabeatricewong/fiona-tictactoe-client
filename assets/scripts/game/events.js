@@ -11,9 +11,12 @@ const onCreateGame = function (event) {
 
   api.createGame()
     .then(ui.createGameSuccess)
+    .then(api.indexGame)
+    .then(ui.indexGameSuccess)
     .catch(ui.createGameFailure)
 }
 
+// Possible wins based on current player's move/index:
 const checkWin = [
   [[1, 2], [3, 6], [4, 8]],
   [[0, 2], [4, 7]],
@@ -27,16 +30,20 @@ const checkWin = [
 ]
 
 const gameOver = function (index) {
+  // Make copy of the board so that the actual board doesn't change:
   const boardCopy = [...store.gameState.board]
+  // Simulate current player's move:
   boardCopy[index] = store.gameState.currentPlayer
 
   for (let i = 0; i < checkWin[index].length; i++) {
+    // Check is someone won:
     if (boardCopy[checkWin[index][i][0]] === store.gameState.currentPlayer && boardCopy[checkWin[index][i][1]] === store.gameState.currentPlayer) {
       return store.gameState.currentPlayer
     }
   }
   for (let i = 0; i < boardCopy.length; i++) {
     if (boardCopy[i] === '') {
+      // game is not over yet. `undefined` is falsy.
       return undefined
     }
   }
@@ -52,6 +59,7 @@ const makeMove = function (index) {
     ui.updateGameFailure('This space is taken! Try another one.')
   } else {
     const winner = gameOver(index)
+    // `!!winner` will change strings (bc truthy) into Boolean:
     api.updateGame(index, store.gameState.currentPlayer, !!winner, store.gameState.id)
       .then((response) => ui.updateGameSuccess(response, winner))
       .catch(ui.updateGameFailure)

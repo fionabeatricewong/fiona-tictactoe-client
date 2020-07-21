@@ -15,7 +15,6 @@ const createGame = function () {
 }
 
 const updateGame = function (index, value, over, id) {
-  console.log(`over: ${over}`)
   return $.ajax({
     headers: {
       Authorization: 'Bearer ' + store.user.token
@@ -34,7 +33,21 @@ const updateGame = function (index, value, over, id) {
   })
 }
 
+const indexGame = function () {
+  return $.ajax({
+    headers: {
+      Authorization: 'Bearer ' + store.user.token
+    },
+    url: config.apiUrl + '/games',
+    method: 'GET',
+    data: {
+      games: []
+    }
+  })
+}
+
 module.exports = {
   createGame,
-  updateGame
+  updateGame,
+  indexGame
 }
