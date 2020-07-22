@@ -21,16 +21,20 @@ div {
   > form {
     padding: 10px;
   }
-}
+  }
 
 h1 {
   font-weight: lighter;
   letter-spacing: 3px;
+  position: sticky;
 }
 
 .authenticated {
+  align-items: center;
   display: flex;
+  flex-flow: column wrap;
   justify-content: center;
+  position: relative;
 }
 
 .cell {
@@ -42,7 +46,20 @@ h1 {
 }
 
 .unauthenticated {
-  display: flex
+  align-items: center;
+  display: flex;
+  flex-flow: column wrap;
   flex-wrap: wrap;
+  justify-content: center;
+  position: relative;
+}
+
+#index-game {
+  display: flex;
+  justify-content: flex-end;
+}
+
+#message {
+  display: flex;
   justify-content: center;
 }

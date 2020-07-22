@@ -17,12 +17,14 @@
       <p id="message"></p>
 
       <div class="unauthenticated" id="unauthenticated">
-        <form id="sign-up">
+        <form class="sign-up" id="sign-up">
           <input name="credentials[email]" placeholder="e-mail" type="text">
           <input name="credentials[password]" placeholder="password" type="password">
           <input name="credentials[password_confirmation]" placeholder="confirm password" type="password">
           <button type="submit">sign up!</button>
         </form>
+
+        <br>
 
         <form id="sign-in">
         <input name="credentials[email]" placeholder="e-mail" type="text">
@@ -46,7 +48,6 @@
           <button type="submit">Start Game</button>
         </form>
 
-        <p id="index-game"></p>
       </div>
 
       <div id="game-started">
@@ -64,6 +65,8 @@
           </div>
         </div>
       </div>
+
+        <p id="index-game"></p>
 
     </body>
 </html>
