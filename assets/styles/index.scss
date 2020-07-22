@@ -2,9 +2,47 @@
 
 $grid-border-color: #000;
 
+* {
+  font-weight: lighter;
+  letter-spacing: 2px;
+}
+
+button {
+  border-width: thin;
+}
+
+body {
+  margin: 5%;
+}
+
+div {
+  padding: 10px;
+
+  > form {
+    padding: 10px;
+  }
+}
+
+h1 {
+  font-weight: lighter;
+  letter-spacing: 3px;
+}
+
+.authenticated {
+  display: flex;
+  justify-content: center;
+}
+
 .cell {
   border-color: $grid-border-color;
   border-style: solid;
-  height: 80px;
-  width: 80px;
+  border-width: thin;
+  height: 100px;
+  width: 10px;
+}
+
+.unauthenticated {
+  display: flex
+  flex-wrap: wrap;
+  justify-content: center;
 }
