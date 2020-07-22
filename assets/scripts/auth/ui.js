@@ -31,6 +31,8 @@ const signInSuccess = function (response) {
   // Remove sign up and sign in options, show the rest:
   $('#authenticated').show()
   $('#unauthenticated').hide()
+  $('#create-game').show()
+  $('#index-game').show()
 }
 const signInFailure = function () {
   $('#message').text('Try again! Did you forget your e-mail/password?')
@@ -45,6 +47,7 @@ const signOutSuccess = function () {
   $('#sign-up').show()
   $('#authenticated').hide()
   $('#game-started').hide()
+  $('#index-game').hide()
 
   store.user = null
 }
