@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-      <title>Fiona's Tic Tac Toe</title>
+      <title>tic tac toe</title>
       <meta name="viewport" content="width=device-width, initial-scale=1">
 
       <!-- Do not add `link` tags-->
@@ -12,11 +12,11 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
-      <h1>Fiona's Tic Tac Toe</h1>
+      <h1>tic tac toe #</h1>
 
       <p id="message"></p>
 
-      <div id="unauthenticated">
+      <div class="unauthenticated" id="unauthenticated">
         <form id="sign-up">
           <input name="credentials[email]" placeholder="e-mail" type="text">
           <input name="credentials[password]" placeholder="password" type="password">
@@ -31,7 +31,7 @@
       </form>
       </div>
 
-      <div id="authenticated">
+      <div class="authenticated" id="authenticated">
         <form id="sign-out">
           <button type="submit">sign out</button>
         </form>
