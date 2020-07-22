@@ -13,6 +13,8 @@ $('#unauthenticated').show()
 // Sign Up:
 const signUpSuccess = function () {
   $('#message').text('Signed up! Sign in to play!')
+
+  $('form').trigger('reset')
 }
 const signUpFailure = function () {
   $('#message').text('Could not sign up! Try again!')
@@ -23,6 +25,8 @@ const signInSuccess = function (response) {
   $('#message').text('Signed in! Time to play! Click "Start Game"')
 
   store.user = response.user
+
+  $('form').trigger('reset')
 
   // Remove sign up and sign in options, show the rest:
   $('#authenticated').show()
@@ -51,6 +55,8 @@ const signOutFailure = function () {
 // Change Password:
 const changePasswordSuccess = function () {
   $('#message').text('Password updated!')
+
+  $('form').trigger('reset')
 }
 const changePasswordFailure = function () {
   $('#message').text('Password has not changed!')
