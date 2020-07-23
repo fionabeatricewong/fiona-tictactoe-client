@@ -1,0 +1,101 @@
+@import '~bootstrap/scss/bootstrap';
+
+$board-hover-color: #fafafa;
+$grid-border-color: #000;
+
+* {
+  font-weight: lighter;
+  letter-spacing: 2px;
+}
+
+button {
+  border-width: thin;
+}
+
+body {
+  margin: 2%;
+}
+
+div {
+  padding: 10px;
+
+  > form {
+    padding: 10px;
+  }
+  }
+
+h1 {
+  font-weight: lighter;
+  letter-spacing: 3px;
+  position: sticky;
+}
+
+.authenticated {
+  align-items: center;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  position: relative;
+}
+
+.board {
+  margin: auto;
+  max-height: calc(80vh - 75px);
+  max-width: calc(80vh - 75px);
+}
+
+.box {
+  // Center x's and o's along cross-axis (top to bottom):
+  align-items: center;
+  // Lines (horizontal) between each row:
+  border-bottom: 1px solid $grid-border-color;
+  // Lines (vertical) between each column:
+  border-right: 1px solid $grid-border-color;
+  // Centering x's and o's on board with flexbox (justify content and align items):
+  display: flex;
+  // x's and o's will take up 5% of viewport's height:
+  font-size: 5vh;
+  // Center x's and o's on main axis (left to right):
+  justify-content: center;
+  // Min height for each box:
+  min-height: calc(100% / 3);
+  // User cannot select/highlight x's and o's:
+  user-select: none;
+
+  &:hover {
+    background-color: $board-hover-color;
+  }
+
+  // Select every 3rd element with 3n to remove most right vertical line:
+  &:nth-child(3n) {
+    border-right: 0;
+  }
+
+  // Select last 3 elements to remove most botton horizontal line:
+  &:nth-last-child(-1n + 3) {
+    border-bottom: 0;
+  }
+}
+
+.container {
+  height: 55vh;
+}
+
+.unauthenticated {
+  align-items: center;
+  display: flex;
+  flex-flow: column wrap;
+  flex-wrap: wrap;
+  justify-content: center;
+  position: relative;
+}
+
+#index-game {
+  display: flex;
+  justify-content: flex-end;
+}
+
+#message {
+  display: flex;
+  justify-content: center;
+}
