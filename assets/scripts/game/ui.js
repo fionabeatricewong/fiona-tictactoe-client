@@ -65,7 +65,6 @@ const updateGameFailure = function (error) {
 const indexGameSuccess = function (response) {
   // `- 1` because each sign in creates a new game and therefore increases game count
   $('#index-game').text(`# of games played: ${response.games.length - 1}`)
-  console.log(response)
 }
 
 const indexGameFailure = function () {
