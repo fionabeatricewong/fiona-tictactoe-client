@@ -28,13 +28,9 @@ I found it helpful to write pseudocode to set up a sort of skeleton for my code,
 
 ### Unsolved Problems
 
-I believe I have met the requirements for this project, but I still need to work on the CSS/SCSS to make the website look cleaner, more organized, and pleasing to look at.
-
 Eventually, I would like to allow the user to choose/change the 'x' and the 'o' to letters/characters they want. I would also like to give the user an option for board dimensions (3x3, 4x4, etc).
 
 ## Images
 
 Wireframe:
 [Fiona's TicTacToe Wireframe](https://i.imgur.com/9khv2sB.png)
-
-README.md must include unsolved problems which would be fixed in future iterations.
